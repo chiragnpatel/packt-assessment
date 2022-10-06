@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Helpers\ProductsSyncHelper;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class SyncProducts extends Command
 {
@@ -59,6 +60,7 @@ class SyncProducts extends Command
 
     private function parent()
     {
+        Artisan::call('product:flush-product-table');
         $syncProductsData = new ProductsSyncHelper();
         $syncProductsData->getProducts();
     }

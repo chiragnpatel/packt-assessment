@@ -18,7 +18,7 @@ class ProductDetailCollection extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'image' => "https://static.packt-cdn.com/products/".$this->isbn13."/cover/large",
+            'image' => "https://static.packt-cdn.com/products/".$this->isbn13."/cover/smaller",
             'url' => $this->url,
             'authors' => $this->getAuthors($this->authors),
             'publication_date' => Carbon::parse($this->publication_date)->format('M Y'),
