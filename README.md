@@ -16,7 +16,7 @@ This the assessment project for packt only developed by Chirag Patel.
    3) Creat .env file from .env.example
    4) Change DB connections varibale
    5) Add 'PACKT_TOKEN' & 'END_POINT' in .env file.
-        #you will get END_POINT and PACKT_TOKEN from [https://api.packt.com/].
+        #you will get END_POINT and PACKT_TOKEN from [Packt](https://api.packt.com/).
    6) run `php artisan config:cache`
    7) run `php artisan migrate`
    8) run `php artisan db:seed --class=CategoriesTableSeeder` to insert categories.
