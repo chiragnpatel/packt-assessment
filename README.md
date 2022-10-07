@@ -11,17 +11,17 @@ This the assessment project for packt only developed by Chirag Patel.
     - MySql / MariaDB
     - node.js & npm
 ## Installation
-```python
-   1) Clone repo
+   1) Clone this repo
    2) run `php artisan key:generate`
    3) Creat .env file from .env.example
    4) Change DB connections varibale
    5) Add 'PACKT_TOKEN' & 'END_POINT' in .env file.
         #you will get END_POINT and PACKT_TOKEN from [https://api.packt.com/].
-   6) run `php artisan migrate`
-   7) run `php artisan db:seed --class=CategoriesTableSeeder` to insert categories.
-   8) run `php artisan product:sync-products` to sync Product master data.
-   9) run `php artisan product:sync-products child` to sync Product detail data.
+   6) run `php artisan config:cache`
+   7) run `php artisan migrate`
+   8) run `php artisan db:seed --class=CategoriesTableSeeder` to insert categories.
+   9) run `php artisan product:sync-products` to sync Product master data.
+   10) run `php artisan product:sync-products child` to sync Product detail data.
    
    # Install Breeze and dependencies...
      composer require laravel/breeze --dev
@@ -29,8 +29,7 @@ This the assessment project for packt only developed by Chirag Patel.
      php artisan breeze:install api
      
      composer dump-autoload -o
-       
-```
+   
 Next, ensure that your application's APP_URL and FRONTEND_URL environment variables are set to http://localhost:8000 and http://localhost:3000, respectively.
 
 After defining the appropriate environment variables, you may serve the Laravel application using the serve Artisan command:
