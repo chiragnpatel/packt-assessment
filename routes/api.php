@@ -21,4 +21,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
  * Api to get books by category
  */
 Route::get('books/{id}/{limit?}', 'App\Http\Controllers\Product\ProductController@index')->name('books')->where('id','[0-9]+');
+Route::get('categories', 'App\Http\Controllers\Product\CategoryController@index')->name('categories');
 

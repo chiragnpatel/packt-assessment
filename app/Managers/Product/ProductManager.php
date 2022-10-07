@@ -2,6 +2,7 @@
 
 namespace App\Managers\Product;
 
+use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\ProductDetailCollection;
 use App\Models\Category;
 use App\Models\ProductDetail;
@@ -10,6 +11,7 @@ use App\Models\ProductDetail;
 class ProductManager
 {
     const LIMIT = 9;
+
     public function doGetBooksByCategory($data)
     {
         try {
@@ -17,9 +19,9 @@ class ProductManager
             $categoryID = $data->route('id');
             $isExist = Category::FindOrFail($categoryID);
             if ($isExist) {
-                $response = ProductDetail::select('id','isbn13','title','authors','url','publication_date','length','pages')
-                ->where('product_type',ProductDetail::BOOK)
-                ->where('category',$categoryID)
+                $response = ProductDetail::select('id', 'isbn13', 'title', 'authors', 'url', 'publication_date', 'length', 'pages')
+                    ->where('product_type', ProductDetail::BOOK)
+                    ->where('category', $categoryID)
                     ->limit($limit)
                     ->orderBy('title')
                     ->get();
@@ -35,6 +37,23 @@ class ProductManager
                     "error" => true
                 ];
             }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function doGetCategories()
+    {
+        try {
+            $response = Category::select('id', 'name')
+                ->orderBy('id','ASC')
+                ->get();
+            return [
+                "data" => CategoryCollection::collection($response),
+                "message" => "Category Data fetched Successfully!",
+                "error" => false
+            ];
 
         } catch (\Exception $e) {
             return $e->getMessage();
